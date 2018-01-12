@@ -1,13 +1,16 @@
 const routes = require('express').Router();
-
 const db = require('../models');
-
 const path = require('path');
+const getKeys = require('../env.js');
+const key = getKeys.key;
+const id = getKeys.id;
 
 /// home path get ///
 routes.get('/', function (req, res){
 	res.sendFile(path.join(__dirname + '/../public/views/main.html'));
 });
+/// get all ///
+
 routes.get('/home/face/', function(req, res) {
 	let getAll = db.Recognize.find();
 	console.log(getAll);
@@ -23,5 +26,7 @@ routes.get('/home/face/:id', function(req, res) {
 
 	});
 });
+
+
 
 module.exports = routes;

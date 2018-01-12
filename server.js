@@ -6,12 +6,11 @@ const mongoose = require('mongoose');
 const routes = require('./config/routes');
 
 
-
 //app.use(express.static(__dirname + '../../public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', routes)
+app.use('/', routes);
 
 
 /// setting up port to listen ///
