@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose"),
+Schema = mongoose.Schema;
 
-let faceSchema = ({
+let faceSchema = new Schema ({
 	name: String,
 	photoUrl: String,
 	likes: String,
@@ -10,11 +10,11 @@ let faceSchema = ({
 	specialRequests: String,
 	significantOther: String,
 	kids: String,
-	birthday: Number,
+	birthday: String,
 	favoriteTeam: String,
 	miscNotes: String
 });
 
-let Recongnize = mongoose.model('Recongnize', faceSchema);
+let Recognize = mongoose.model('Recognize', faceSchema);
 
-module.exports = Recongnize;
+module.exports = Recognize;

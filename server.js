@@ -1,33 +1,30 @@
 //const request = require('request');
 const express = require('express');
 const app = express();
+bodyParser = require('body-parser')
 
-/// set up image schema ///
-let mongoose = require('mongoose');
-mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/Face-App' );
+const db = require('./models');
 
-let Schema = mongoose.Schema;
-
-let faceSchema = ({
-	name: String,
-	photoUrl: String,
-	likes: [ String ],
-	dislikes: [ String ],
-	hometown: String,
-	specialRequests: String,
-	significantOther: [ String ],
-	kids: String,
-	birthday: Number,
-	favoriteTeam: String,
-	miscNotes: String
-});
-
-let Recongnize = mongoose.model('Recongnize', faceSchema);
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /// home path get ///
 app.get('/home', function (req, res){
 	res.send('hello from root get');
+});
+app.get('/home/face/', function(req, res) {
+	let getAll = db.Recognize.find();
+	console.log(getAll);
+	res.json(getAll);
+
+})
+app.get('/home/face/:id', function(req, res) {
+	let reqId = req.params.id;
+	console.log(reqId);
+	db.Recognize.findById(reqId, function(err, doc) {
+		if (err) throw err
+		res.json(doc);
+
+	});
 });
 
 
