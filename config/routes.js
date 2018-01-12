@@ -2,9 +2,11 @@ const routes = require('express').Router();
 
 const db = require('../models');
 
+const path = require('path');
+
 /// home path get ///
 routes.get('/', function (req, res){
-	res.send('hello from root get');
+	res.sendFile(path.join(__dirname + '/../public/views/main.html'));
 });
 routes.get('/home/face/', function(req, res) {
 	let getAll = db.Recognize.find();

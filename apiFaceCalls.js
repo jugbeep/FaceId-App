@@ -21,5 +21,7 @@ function get(faceId) {
 	});
 };
 
+get();
+
 module.exports = get;
 
