@@ -1,14 +1,25 @@
-//const request = require('request');
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./config/routes');
-
-
-//app.use(express.static(__dirname + '../../public'));
+const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
+app.use(session({secret: 'hey' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./config/passport')(passport);
+
 
 app.use('/', routes);
 
