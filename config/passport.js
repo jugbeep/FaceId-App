@@ -22,7 +22,8 @@ module.exports = function(passport) {
 			if(err) return callback(err);
 
 			//there is a user with this email
-			if (user) {
+			if (!user) {
+				console.log('found user')
 				return callback(null, false, req.flash('signupMessage', "email in use"));
 
 			} else {

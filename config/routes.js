@@ -5,25 +5,24 @@ const getKeys = require('../env.js');
 const key = getKeys.key;
 const id = getKeys.id;
 const passport = require('passport');
-	
+
 
 /// home path get ///
 router.get('/', function (req, res){
-	res.sendFile(path.join(__dirname + '/../public/index.html'));
+	res.sendFile('./index.html');
+});
+
+router.get('/signup', function(req, res) {
+	res.render('signup.ejs');
 });
 /// get all ///
 
-router.post('/signup', function(req, res, next) {
-	console.log('posted!')
-	//res.send(req.body);
-	let signupStrategy = passport.authenticate('local-signup', {
-		successRedirect: '/',
-		failureRedirect: 'signup',
-		failureFlash: true
-	});
+router.get('/home', function(req, res) {
+	console.log('hit home page req');
+	
+})
 
-	return signupStrategy(req, res, next);
-});
+
 
 router.get('/home/face/', function(req, res) {
 	let getAll = db.Recognize.find();
@@ -40,10 +39,21 @@ router.get('/home/face/:id', function(req, res) {
 
 	});
 });
-
-router.get('/signup', function(req, res) {
-	res.render('signup.ejs');
+///log in, signup and redirects ///	
+router.post('/signup', function(req, res, next) {
+	//res.send(req.body);
+	let signupStrategy = passport.authenticate('local-signup', {
+		successRedirect: '/',
+		failureRedirect: 'signup',
+		failureFlash: true
+	});
+	console.log('hit auth on post')
+	return signupStrategy(req, res, next);
 });
+
+
+
+
 
 
 
