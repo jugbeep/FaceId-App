@@ -5,7 +5,8 @@ $(document).ready(function(){
 $.get('https://super-crud.herokuapp.com/books')
     .done(function(data){
       console.log(data);
-    });
+	});
+
 
 // /// ajax ///
 

@@ -18,11 +18,13 @@ router.get('/signup', function(req, res) {
 /// get all ///
 
 router.get('/home', function(req, res) {
-	console.log('hit home page req');
-	
+	console.log('hit home page req');	
 })
 
-
+router.post('/', function (req, res) {
+	console.log(req.params);
+	res.json(req.params);
+})
 
 router.get('/home/face/', function(req, res) {
 	let getAll = db.Recognize.find();
