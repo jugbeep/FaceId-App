@@ -5,16 +5,31 @@ const getKeys = require('../env.js');
 const key = getKeys.key;
 const id = getKeys.id;
 const passport = require('passport');
+const bodyParser = require('body-parser');
+const usersController = require('../controllers/users');
 
+function authenticatedUser(req, res, next) {
+	if (req.isAuthenticated()) return next();
+
+	res.redirect('/')
+}
 
 /// home path get ///
 router.get('/', function (req, res){
 	res.sendFile('./index.html');
 });
 
-router.get('/signup', function(req, res) {
-	res.render('signup.ejs');
-});
+router.route('/signup')
+	.get(usersController.getSignup)
+	.post(usersController.postSignup)
+
+router.route('/login')
+  	.get(usersController.getLogin)
+  	.post(usersController.postLogin)
+
+router.route("/logout")
+ 	 .get(usersController.getLogout)
+
 /// get all ///
 
 router.get('/home', function(req, res) {
