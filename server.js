@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');

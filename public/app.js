@@ -1,12 +1,12 @@
 $(document).ready(function(){
 	console.log('doc is ready');
 
-
-$.get('https://super-crud.herokuapp.com/books')
-    .done(function(data){
-      console.log(data);
-	});
-
+$('.btn-primary').submit(function(event) {
+	$.get('https://super-crud.herokuapp.com/books')
+    .done(function(books){
+      console.log(books);
+	});	
+})
 
 // /// ajax ///
 
