@@ -7,6 +7,4 @@ const request = require('request');
 
 get();
 
-module.exports = get;
 
-//haaay!
