@@ -11,24 +11,26 @@ const passport = require('passport');
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.static('public'));
 
+///render EJS ///
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
+///passport and session setup//
 app.use(session({secret: 'hey' }));
 app.use(passport.initialize());
 app.use(passport.session());
+///flash messages, (does not seem to be working)///
 app.use(flash());
 
 require('./config/passport')(passport);
+
 
 app.use(function (req, res, next) {
 	res.locals.currentUser = req.user;
 	next();
 })
 
-
 app.use(routes);
-
 
 /// setting up port to listen ///
 app.listen(process.env.PORT || 3000, function() {

@@ -1,12 +1,24 @@
 $(document).ready(function(){
 	console.log('doc is ready');
 
-$('.btn-primary').submit(function(event) {
-	$.get('https://super-crud.herokuapp.com/books')
-    .done(function(books){
-      console.log(books);
-	});	
+$('.findName').submit(function(event) {
+	event.preventDefault();
+
+	$.ajax({
+		data: $('.findName').val(),
+		url: '/dbperson',
+		dataType: JSON,
+	} console.log(data))
+	.done(function(res) {
+		if(res.msg === '') {
+			console.log('successful query');
+		} else {
+			console.log('unsuccesful query');
+		}
+	})
 })
+
+
 
 // /// ajax ///
 
