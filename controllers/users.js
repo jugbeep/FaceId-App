@@ -1,4 +1,5 @@
 var passport = require("passport")
+const flash = require('connect-flash');
 
 //GET signup 
 function getSignup(req, res) {
@@ -7,13 +8,13 @@ function getSignup(req, res) {
 
 //POST signup
 function postSignup(req, res, next) {
-	let signupStragegy = passport.authenticate('local-signup', {
+	let signupStrategy = passport.authenticate('local-signup', {
 		successRedirect : '/home',
 		failureRedirect : '/login',
 		failureFlash : true
 	});
 
-	return signupStragegy(req, res, next);
+	return signupStrategy(req, res, next);
 }
 
 // GET login
@@ -28,7 +29,7 @@ function postLogin(req, res, next) {
 		failureRedirect: '/signup',
 		failureFlash: true
 	});
-
+	console.log('made it to user.js postLogin strat')
 	return loginStrategy(req, res, next);
 }
 

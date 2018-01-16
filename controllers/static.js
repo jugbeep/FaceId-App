@@ -1,6 +1,7 @@
 // GET /
 function home(req, res) {  
-  res.sendFile('public/index.html');
+	console.log('made it HOME!');
+	res.render('index.ejs');
 }
 
 module.exports = {

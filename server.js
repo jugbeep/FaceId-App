@@ -21,12 +21,18 @@ app.use(flash());
 
 require('./config/passport')(passport);
 
+app.use(function (req, res, next) {
+	res.locals.currentUser = req.user;
+	next();
+})
 
-app.use('/', routes);
+
+app.use(routes);
 
 
 /// setting up port to listen ///
 app.listen(process.env.PORT || 3000, function() {
  		console.log('listening on port 3000');
 });
+
 
