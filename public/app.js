@@ -19,24 +19,21 @@ $('.findName').submit(function(event) {
 })
 
 
-
-// /// ajax ///
-
-// let headers = {
-// 	url: 'https://api.kairos.com/v2/media/',
-// 	headers: {
-// 		'app_id': id,
-// 		'app_key': key
-// 	}
-// };
-
-// $('.btn btn-primary').submit(function(){
-// 	event.preventDefault();
-	
-// 	request(headers, function(err, res, body) {
-// 		let resData = JSON.parse(body);
-// 		console.log(resData);
-// 		res.send(body);
-// 	});
-// });
 });
+
+/*
+    <% function setPerson(data) { %> 
+      <% for (var i in data) {%>
+        <% if (data.hasOwnProperty(i)){ %>
+      
+        <input placeholder= <%= data[i] %> >
+        
+        </input>
+ 
+    
+        <% }%>
+      <% };%>
+    <% } %>
+  <% setPerson(doc) %>
+ */
+ 

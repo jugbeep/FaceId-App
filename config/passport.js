@@ -42,7 +42,7 @@ module.exports = function(passport) {
 		passwordField: 'password',
 		passReqToCallback: true
 	}, function(req, email, password, callback) {
-
+		console.log('made it here1');
 		User.findOne({ 'local.email' : email }, function(err, user) {
 			if(err) {
 				return callback(err);
@@ -51,8 +51,14 @@ module.exports = function(passport) {
 			if (!user) {
 				return callback(null, false, req.flash('loginMessage', 'Oops! You done fucked up on the password.'));
 			}
+			console.log('made it here2');
+			user.validPassword(password, function(err, valid) {
+				if (err) return callback(err)
 
-			return callback(null, user);
+				if (!valid) callback(null, false, req.flash('signupMessage', "Signup here!"));
+
+				if (valid) callback(null, user)
+			})
 		});	
 	}))
 };

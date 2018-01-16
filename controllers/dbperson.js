@@ -11,7 +11,7 @@ function find(req, res) {
 		collection.findOne({'name': name }, function(err, doc) {
 			if (err) console.log(err)
 			
-			res.render('personDoc', {doc:doc});
+			res.render('personDoc', { doc : doc });
 		})
 	})
 };		

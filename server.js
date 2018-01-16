@@ -19,6 +19,7 @@ app.set('view engine', 'ejs');
 app.use(session({secret: 'hey' }));
 app.use(passport.initialize());
 app.use(passport.session());
+
 ///flash messages, (does not seem to be working)///
 app.use(flash());
 
