@@ -6,18 +6,17 @@ const bodyParser = require('body-parser');
 const usersController = require('../controllers/users');
 const staticController = require('../controllers/static');
 const apiController = require('../controllers/api');
-const dbController = require('../controllers/dbperson')
+const dbController = require('../models/index')
 
 function authenticatedUser(req, res, next) {
 	if (req.isAuthenticated()) return next();
-
-	res.redirect('/login')
+	res.redirect('/')
 }
-/// home path get ///
-router.get('/', function(req, res) {
-	console.log('hit the home path')
-	res.redirect('/login')
-})
+
+//home page post route
+router.route('/')
+	.get(staticController.home)
+	.post(apiController.hello)
 
 //db person
 router.route('/dbperson')
@@ -37,10 +36,11 @@ router.route('/login')
 router.route("/logout")
  	.get(usersController.getLogout)
 
-//home page post route
-router.route('/home')
-	.get(staticController.home)
-	.post(apiController.hello)
+//api get
+router.route('/api/post')
+	.post(apiController.submit)
+
+
 
 
 module.exports = router;

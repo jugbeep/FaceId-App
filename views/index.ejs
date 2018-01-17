@@ -5,16 +5,14 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-  	
-    <title>Welcome to my home page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-
-
-
+  <br>
+  <br>
   <div class='container'>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block w-100" src="..." alt="First slide">
@@ -34,16 +32,17 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-        </div>
+        </div> -->
         <form action="/dbperson" method="GET">
           <div class="form-group">
             <label for="formGroupExampleInput">Person's First Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Person's Name" name="name">
             <button type="submit" class="btn btn-primary findName">Submit</button>
+            <br>
           </div>
       </form>
     </div>
 
-  <script src="../views/app.js" type="text/javascript"></script>
+  <script src="app.js" type="text/javascript"></script>
 </body>
 </html>

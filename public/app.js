@@ -1,39 +1,18 @@
 $(document).ready(function(){
 	console.log('doc is ready');
 
-$('.findName').submit(function(event) {
-	event.preventDefault();
+let baseUrl = '/api/post'
 
-	$.ajax({
-		data: $('.findName').val(),
-		url: '/dbperson',
-		dataType: JSON,
-	} console.log(data))
-	.done(function(res) {
-		if(res.msg === '') {
-			console.log('successful query');
-		} else {
-			console.log('unsuccesful query');
-		}
-	})
-})
-
-
+$('#apiSubmit').on('click', function(event, req, res, err) {
+ 	event.preventDefault();
+ 	$.ajax({
+ 		method: 'POST',
+ 		url: baseUrl,
+ 		success: function onFoundSuccess(data) {
+ 			console.log(data)
+ 		}
+ 	})
+});
 });
 
-/*
-    <% function setPerson(data) { %> 
-      <% for (var i in data) {%>
-        <% if (data.hasOwnProperty(i)){ %>
-      
-        <input placeholder= <%= data[i] %> >
-        
-        </input>
- 
-    
-        <% }%>
-      <% };%>
-    <% } %>
-  <% setPerson(doc) %>
- */
- 
+

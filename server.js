@@ -7,11 +7,13 @@ const routes = require('./config/routes');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
+const cookieParser = require('cookie-parser')
 
 app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 ///render EJS ///
+app.set('views', './views');
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
@@ -30,7 +32,6 @@ app.use(function (req, res, next) {
 	res.locals.currentUser = req.user;
 	next();
 })
-
 app.use(routes);
 
 /// setting up port to listen ///

@@ -1,4 +1,3 @@
-const flash = require('connect-flash');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
@@ -8,9 +7,9 @@ module.exports = function(passport) {
 		callback(null, user.id);
 	});
 
-	passport.deserializeUser(function(id, done) {
+	passport.deserializeUser(function(id, callback) {
 		User.findById(id, function(err, user) {
-			done(err, user);
+			callback(err, user);
 		});
 	});
 
@@ -24,7 +23,8 @@ module.exports = function(passport) {
 			if (err) return callback(err);
 		
 			if(user) {
-				return callback(null, false, req.flash("signupMessage", "This email is has already been used."))
+				return callback(null, false, req.flash('signupMessage', 'This email is has already been used.'));
+			
 			} else {
 				var newUser = new User();
 				newUser.local.email = email;
@@ -37,28 +37,34 @@ module.exports = function(passport) {
 		}		
 	});
 }));
+
 	passport.use('local-login', new LocalStrategy({
 		usernameField: 'email',
 		passwordField: 'password',
 		passReqToCallback: true
 	}, function(req, email, password, callback) {
-		console.log('made it here1');
+	
+
 		User.findOne({ 'local.email' : email }, function(err, user) {
-			if(err) {
+			console.log('made it here2');
+			if (err) {
 				return callback(err);
 			}
 
 			if (!user) {
-				return callback(null, false, req.flash('loginMessage', 'Oops! You done fucked up on the password.'));
+				return callback(null, false, req.flash('loginMessage', 'Oops! That user does not exist'));
 			}
-			console.log('made it here2');
-			user.validPassword(password, function(err, valid) {
-				if (err) return callback(err)
+			
+			if (!user.validPassword(password)) {
 
-				if (!valid) callback(null, false, req.flash('signupMessage', "Signup here!"));
+			return callback(null, false, req.flash('loginMessage', "opps, that is the wrong password"));
+				
+			}
 
-				if (valid) callback(null, user)
-			})
+			return callback(null, user);
 		});	
-	}))
+	}));
 };
+
+
+

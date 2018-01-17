@@ -7,7 +7,7 @@ const id = getKeys.id;
 
 
 var options = {
-	url: 'http://api.kairos.com/v2/media/b33ca3c50170b07ab05922c3',
+	url: 'https://api.kairos.com/v2/media?source=https://image.ibb.co/dSMRCR/F5_F38570_8_E29_41_CB_A143_D1_F1_C7_A65_D2_E.jpg',
 	headers: {
 	'app_id': id,
 	'app_key': key,
@@ -15,14 +15,25 @@ var options = {
 	}
 }
 
-function hello(err, res, body) {
 
-	request.get(options,  function(error, response, body){
+function hello(err, res, body) {
+	request.get(options,  function(error, response, body) {
 	    console.log('error is ',err);
 		console.log(body);
 		res.send(body);
 	});
 }
+
+function submit(err, res, body) {
+
+	request.post(options, function(error, response, body) {
+		console.log('you have an error:',error);
+		console.log('res is: ',response);
+		console.log('body is ',body);
+		res.send(body);
+	})
+}
 module.exports = {
+	submit: submit,
 	hello: hello
 }

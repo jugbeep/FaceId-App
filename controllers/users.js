@@ -1,16 +1,15 @@
 var passport = require("passport")
-const flash = require('connect-flash');
 
 //GET signup 
-function getSignup(req, res) {
+function getSignup(req, res, next) {
 	res.render('signup.ejs', { message: req.flash('signupMessage') });
 }
 
 //POST signup
 function postSignup(req, res, next) {
 	let signupStrategy = passport.authenticate('local-signup', {
-		successRedirect : '/home',
-		failureRedirect : '/login',
+		successRedirect : '/',
+		failureRedirect : '/signup',
 		failureFlash : true
 	});
 
@@ -25,8 +24,8 @@ function getLogin(req, res, next) {
 //POST login
 function postLogin(req, res, next) {
 	let loginStrategy = passport.authenticate('local-login', {
-		successRedirect: '/home',
-		failureRedirect: '/signup',
+		successRedirect: '/',
+		failureRedirect: '/login',
 		failureFlash: true
 	});
 	console.log('made it to user.js postLogin strat')
@@ -34,9 +33,9 @@ function postLogin(req, res, next) {
 }
 
 //GET logout
-function getLogout(req, res) {
+function getLogout(req, res, next) {
 	req.logout();
-	res.redirect('/login');
+	res.redirect('/');
 }
 
 module.exports = {
