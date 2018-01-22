@@ -35,13 +35,76 @@
         </div> -->
         <form action="/dbperson" method="GET">
           <div class="form-group">
-            <label for="formGroupExampleInput">Person's First Name</label>
+            <label for="formGroupExampleInput">Find Person by First Name:</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Person's Name" name="name">
             <button type="submit" class="btn btn-primary findName">Submit</button>
             <br>
           </div>
       </form>
     </div>
+
+    <br>
+
+    <div class= 'container'>
+    <label>Add a new Person to the Database:</label>
+    <form class="form" id="nameField" name"nameInput" action='/update' method="PUT">
+      <div class="form-group">
+        <label>Name:</label>
+        <input type="text" class="form-control" name="name"></input>
+      </div>
+    
+      <div class="form-group">
+        <label>Likes:</label>
+        <input type="text" class="form-control" name="likes"></input>
+      </div>
+
+      <div class="form-group">
+        <label>Disikes:</label>
+        <input type="text" class="form-control" name="dislikes"></input>
+      </div>
+
+      <div class="form-group">
+        <label>Hometown:</label>
+        <input type="text" class="form-control" name="hometown"></input>
+      </div>
+
+      <div class="form-group">
+        <label>Special Requests:</label>
+        <input type="text" class="form-control" name="specialRequests"></input>
+      </div>
+  
+      <div class="form-group">
+        <label>Sigificant Other:</label>
+        <input type="text" class="form-control" name="significantOther"></input>
+      </div>
+
+      <div class="form-group">
+        <label>Kids:</label>
+        <input type="text" class="form-control" name="kids"></input>
+      </div>
+
+      <div class="form-group">
+        <label>Favorite Team:</label>
+        <input doc. type="text" class="form-control" name="favoriteTeam"></input>
+      </div>
+  
+      <div class="form-group">
+        <label>Birthday:</label>
+        <input type="text" class="form-control" name="birthday"></input>
+      </div>
+  
+      <div class="form-group">
+        <label>Other Notes:</label>
+        <input type="text" class="form-control" name="miscNotes"></input>
+      </div>
+
+      <div class="form-group">
+        <label>Photo URL:</label>
+        <input type="text" class="form-control" name="photoUrl"></input>
+      </div>
+      <button class="btn btn-primary" id="apiSubmit" name="submitBtn">Submit New Person</button>
+    </form>
+  </div>
 
   <script src="app.js" type="text/javascript"></script>
 </body>

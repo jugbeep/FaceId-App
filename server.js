@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -26,8 +25,7 @@ app.use(passport.session());
 app.use(flash());
 
 require('./config/passport')(passport);
-
-
+/// set local user
 app.use(function (req, res, next) {
 	res.locals.currentUser = req.user;
 	next();

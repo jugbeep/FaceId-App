@@ -6,17 +6,10 @@ const key = getKeys.key;
 const id = getKeys.id;
 
 
-var options = {
-	url: 'https://api.kairos.com/v2/media?source=https://image.ibb.co/dSMRCR/F5_F38570_8_E29_41_CB_A143_D1_F1_C7_A65_D2_E.jpg',
-	headers: {
-	'app_id': id,
-	'app_key': key,
-	JSON: true
-	}
-}
 
 
-function hello(err, res, body) {
+
+function hello(req, res) {
 	request.get(options,  function(error, response, body) {
 	    console.log('error is ',err);
 		console.log(body);
@@ -24,15 +17,29 @@ function hello(err, res, body) {
 	});
 }
 
-function submit(err, res, body) {
+function submit(req, res) {
+	
+	let newSub = req.body.photo;
+	let name = req.body.name;
+	let collection = req.body.collection;
+	
+	let body = JSON.stringify({'subject_id': 'name',
+		'gallery_name': 'collection'})
+
+	var options = {
+		url: "https://api.kairos.com/v2/media?source=" + newSub,
+		headers: {
+		'app_id': id,
+		'app_key': key,
+		JSON: true
+		}
+	}
 
 	request.post(options, function(error, response, body) {
-		console.log('you have an error:',error);
-		console.log('res is: ',response);
-		console.log('body is ',body);
-		res.send(body);
+		res.render('success', {body : body});
 	})
 }
+
 module.exports = {
 	submit: submit,
 	hello: hello

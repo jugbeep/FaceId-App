@@ -4,5 +4,10 @@ In this app, a user will be able to submit a photo file with a face to Kairos AP
 by their software. Kairos API will return data about the face scanned, and (ideally) will recognize a face
 if it has been scanned before.
 
+
+Trello : https://trello.com/b/UFDnJ1Hj/project-2
+
+
+
 //// more to come ////
 

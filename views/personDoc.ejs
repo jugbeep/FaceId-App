@@ -35,37 +35,95 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
- 
-<div class="form">
-  <div class="form-group">
-      <label>Name:</label>
-        <input value="<%= doc.name %>" type="text" class="form-control"></input>
-      <label>ID:</label>
-        <input value="<%= doc._id %>" type="text" class="form-control"></input>
-      <label>Likes:</label>
-        <input value="<%= doc.likes %>" type="text" class="form-control"></input>
-      <label>Dislikes:</label>
-        <input value="<%= doc.dislikes %>" type="text" class="form-control"></input>
-      <label>Hometown:</label>
-        <input value="<%= doc.hometown %>" type="text" class="form-control"></input>
-      <label>Special Requests:</label>
-        <input value="<%= doc.specialRequests %>" type="text" class="form-control"></input>
-      <label>Significant Other:</label>
-        <input value="<%= doc.significantOther %>" type="text" class="form-control"></input>
-      <label>Kids:</label>
-        <input value="<%= doc.kids %>" type="text" class="form-control"></input>
-      <label>Favorite Team:</label>
-        <input value="<%= doc.favoriteTeam %>" type="text" class="form-control"></input>
-      <label>Birthday:</label>
-        <input value="<%= doc.birthday%>" type="text" class="form-control"></input>
-      <label>Other Notes:</label>
-        <input value="<%= doc.miscNotes%>" type="text" class="form-control"></input>
-      <label>Photo Submit:</label>
-        <input value="<%= doc.photoUrl %>" type="text" class="form-control">
-      <button action:'/apiSubmit' type="Submit" class="btn btn-primary" id="apiSubmit" method="POST">Submit</button></input>
-
-
   </div>
-</div>
+
+  <div class= 'container'>
+    <form class="form" id="nameField" name"nameInput" action='/update' method="PUT">
+      <div class="form-group">
+        <label>Name:</label>
+        <input value="<%= doc.name %>" type="text" class="form-control" name="name"></input>
+        <button class="btn btn-primary" id="nameInput">Update</button>
+      </div>
+ 
+      <div class="form-group">
+        <label>Likes:</label>
+        <input value="<%= doc.likes %>" type="text" class="form-control" name="likes"></input>
+        <button class="btn btn-primary" id="likesInput">Update</button>
+      </div>
+
+      <div class="form-group">
+        <label>Disikes:</label>
+        <input value="<%= doc.dislikes %>" type="text" class="form-control" name="dislikes"></input>
+        <button class="btn btn-primary" id="dislikesInput">Update</button>
+      </div>
+
+      <div class="form-group">
+        <label>Hometown:</label>
+        <input value="<%= doc.hometown %>" type="text" class="form-control" name="hometown"></input>
+        <button class="btn btn-primary" id="hometownInput">Update</button>
+      </div>
+
+      <div class="form-group">
+        <label>Special Requests:</label>
+        <input value="<%= doc.specialRequests %>" type="text" class="form-control" name="specialRequests"></input>
+        <button class="btn btn-primary" id="specialRequests">Update</button>
+      </div>
+  
+      <div class="form-group">
+        <label>Sigificant Other:</label>
+        <input value="<%= doc.significantOther %>" type="text" class="form-control" name="significantOther"></input>
+        <button class="btn btn-primary" id="significantOther">Update</button>
+      </div>
+
+      <div class="form-group">
+        <label>Kids:</label>
+        <input value="<%= doc.kids %>" type="text" class="form-control" name="kids"></input>
+        <button class="btn btn-primary" id="kids">Update</button>
+      </div>
+
+      <div class="form-group">
+        <label>Favorite Team:</label>
+        <input value="<%= doc.favoriteTeam %>" type="text" class="form-control" name="favoriteTeam"></input>
+        <button class="btn btn-primary" id="favoriteTeam">Update</button>
+      </div>
+  
+      <div class="form-group">
+        <label>Birthday:</label>
+        <input value="<%= doc.birthday %>" type="text" class="form-control" name="birthday"></input>
+        <button class="btn btn-primary" id="birthday">Update</button>
+      </div>
+  
+      <div class="form-group">
+        <label>Other Notes:</label>
+        <input value="<%= doc.miscNotes %>" type="text" class="form-control" name="miscNotes"></input>
+        <button class="btn btn-primary" id="miscNotes">Update</button>
+      </div>
+    </form>
+  </div>
+  
+  <hr>
+
+  <div class='container'>   
+    <form action="/api" method="POST">
+
+      <label>Photo Submit:</label>
+      <input value="<%= doc.photoUrl %>" type="text" class="form-control" name="photo"></input>
+    
+      <label>Collection:</label>
+      <select name="collection">
+        <option value="school" name="school" type="option">School</option>
+        <option value="work" name="work">Work</option>
+        <option value="personal" name="personal">Personal</option>
+      </select>
+
+     <br>
+
+      <div class="form-group">
+        <input value="<%= doc.name %>" type="text" class="form-control" name="name" readonly></input>
+      <button type="submit" class="btn btn-primary" id="apiSubmit" name="submitBtn">Submit</button>
+
+    </form>
+  </div>    
+
 <script src="app.js" type="text/javascript"></script>
 

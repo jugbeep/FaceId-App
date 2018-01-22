@@ -1,18 +1,17 @@
 $(document).ready(function(){
 	console.log('doc is ready');
 
-let baseUrl = '/api/post'
 
-$('#apiSubmit').on('click', function(event, req, res, err) {
+$('#apiSubmit').on('submit', function(event) {
  	event.preventDefault();
- 	$.ajax({
- 		method: 'POST',
- 		url: baseUrl,
- 		success: function onFoundSuccess(data) {
- 			console.log(data)
- 		}
+ 	let formData = $(this).serialize();
+ 	console.log('form data is: ',formData);
+
+ 	$.post('/api/post', formData, function() {
+ 	console.log('from submitted!')
  	})
-});
+ 	//Do something else here
+ 	})
 });
 
 

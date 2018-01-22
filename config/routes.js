@@ -16,11 +16,15 @@ function authenticatedUser(req, res, next) {
 //home page post route
 router.route('/')
 	.get(staticController.home)
-	.post(apiController.hello)
+	//.post(apiController.hello)
 
 //db person
 router.route('/dbperson')
 	.get(dbController.find)
+
+//db update	
+router.route('/update')
+	.get(dbController.update)
 
 //signup route
 router.route('/signup')
@@ -37,8 +41,12 @@ router.route("/logout")
  	.get(usersController.getLogout)
 
 //api get
-router.route('/api/post')
+router.route("/api")
 	.post(apiController.submit)
+	
+
+
+
 
 
 
