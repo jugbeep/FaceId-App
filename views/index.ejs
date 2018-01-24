@@ -40,14 +40,15 @@
             <button type="submit" class="btn btn-primary findName">Submit</button>
             <br>
           </div>
-      </form>
-    </div>
+        </form>
+      </div>
 
     <br>
 
     <div class= 'container'>
     <label>Add a new Person to the Database:</label>
-    <form class="form" id="nameField" name"nameInput" action='/update' method="PUT">
+    <form action='/dbperson' method="POST" class="form" id="nameField" name"nameInput" >
+
       <div class="form-group">
         <label>Name:</label>
         <input type="text" class="form-control" name="name"></input>
@@ -102,7 +103,7 @@
         <label>Photo URL:</label>
         <input type="text" class="form-control" name="photoUrl"></input>
       </div>
-      <button class="btn btn-primary" id="apiSubmit" name="submitBtn">Submit New Person</button>
+      <button type="submit" class="btn btn-primary" id="apiSubmit" name="submitBtn">Submit New Person</button>
     </form>
   </div>
 

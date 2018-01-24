@@ -21,6 +21,8 @@ router.route('/')
 //db person
 router.route('/dbperson')
 	.get(dbController.find)
+	.post(dbController.newPerson)
+
 
 //db update	
 router.route('/update')
@@ -44,6 +46,8 @@ router.route("/logout")
 router.route("/api")
 	.post(apiController.submit)
 	
+router.route('/delete')
+	.get(dbController.deletePerson)
 
 
 
