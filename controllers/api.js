@@ -29,8 +29,8 @@ function submit(req, res) {
 	var options = {
 		url: "https://api.kairos.com/v2/media?source=" + newSub,
 		headers: {
-		'app_id': id || process.env.id,
-		'app_key': key || process.env.key,
+		'app_id': process.env.id,
+		'app_key': process.env.key,
 		JSON: true
 		}
 	}
