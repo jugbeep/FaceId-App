@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
-const getKeys = require('../env.js');
-const key = getKeys.key;
-const id = getKeys.id;
+//const getKeys = require('../env.js');
+// const key = getKeys.key;
+// const id = getKeys.id;
 
-
+console.log(process.env.key)
 
 
 
@@ -29,8 +29,8 @@ function submit(req, res) {
 	var options = {
 		url: "https://api.kairos.com/v2/media?source=" + newSub,
 		headers: {
-		'app_id': id,
-		'app_key': key,
+		'app_id': id || process.env._id,
+		'app_key': key || process.env._key,
 		JSON: true
 		}
 	}
