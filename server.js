@@ -36,7 +36,6 @@ app.use(routes);
 
 /// setting up port to listen ///
 app.listen(process.env.PORT || 3000, function() {
-	console.log(process.env.key)
  		console.log('listening on port 3000');
 });
 
