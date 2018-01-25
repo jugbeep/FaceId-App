@@ -7,7 +7,11 @@ if it has been scanned before.
 
 Trello : https://trello.com/b/UFDnJ1Hj/project-2
 
+Wireframes:
+
+https://i.imgur.com/9zCeI8H.jpg
+
+https://i.imgur.com/omJi7rK.jpg
 
 
-//// more to come ////
 
