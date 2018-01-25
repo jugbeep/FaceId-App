@@ -10,15 +10,18 @@ const dbController = require('../models/index')
 
 function authenticatedUser(req, res, next) {
 	if (req.isAuthenticated()) return next();
-	res.redirect('/')
+	res.redirect('/dbperson')
 }
 
 //home page post route
 router.route('/')
-	.get(staticController.home)
+	.get(staticController.login)
 	//.post(apiController.hello)
 
 //db person
+router.route('/home')
+	.get(staticController.home)
+
 router.route('/dbperson')
 	.get(dbController.find)
 	.post(dbController.newPerson)
